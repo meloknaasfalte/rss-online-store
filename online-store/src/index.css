@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333b41;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+._container {
+  max-width: 1630px;
+  padding: 0px 15px;
+  margin: 0px auto;
+}
+
+/*========================================HEADER==================================================*/
+
+.header {
+  background: yellow;
+}
+.header__container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex: 0 1 100%;
+  justify-content: space-between;
+}
+.header__store-link {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+.store-link__image {
+  width: 100px;
+  height: 100px;
+}
+.store-link__text {
+}
+
+.header__count {
+}
+.count__text {
+}
+.count__money {
+}
+
+.header__basket-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: url('assets/basket.png') no-repeat;
+  background-size: 100px 100px;
+}
+
+.basket-link__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+}
