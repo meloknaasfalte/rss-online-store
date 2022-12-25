@@ -23,13 +23,18 @@ const baseConfig = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(ico|jpg|jpeg|gif|png)$/i,
+        test: /\.(ico|jpg|jpeg|gif|png|svg)$/i,
         type: 'asset/resource',
       },
       {
         test: /\.[tj]s$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.woff2?$/i,
+        type: 'asset/resource',
+        generator: { filename: 'fonts/[name].[ext]' },
       },
     ],
   },
