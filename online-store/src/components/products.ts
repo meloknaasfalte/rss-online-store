@@ -369,7 +369,7 @@ export const products = [
     discountPercentage: 16.99,
     rating: 4.06,
     stock: 140,
-    brand: 'Fair & Clear',
+    brand: 'Fair and Clear',
     category: 'skincare',
     thumbnail: 'https://i.dummyjson.com/data/products/20/thumbnail.jpg',
     images: [

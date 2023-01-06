@@ -234,6 +234,13 @@ body {
   display: flex;
   padding: 10px 0px 10px 5px;
 }
+.filter__link-count {
+  width: 50px;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .filter__checkbox {
 }
 
@@ -359,15 +366,17 @@ input[type='range']::-moz-range-thumb {
 }
 .settings__select {
   height: 30px;
-  width: 130px;
+  width: 250px;
   background: white;
   font-size: 20px;
   line-height: 25.88px;
   font-weight: 700;
+  text-align: center;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 .settings__select:hover {
   background: #51aa27;
@@ -391,11 +400,15 @@ input[type='range']::-moz-range-thumb {
   height: 30px;
   width: 30px;
   gap: 4px;
+  cursor: pointer;
 }
 .view-list__block {
-  background: black;
+  background: #51aa27;
   height: 13px;
   width: 100%;
+}
+.view-list__block-grid-view {
+  background: black;
 }
 
 .view__grid {
@@ -404,6 +417,7 @@ input[type='range']::-moz-range-thumb {
   height: 30px;
   width: 30px;
   gap: 4px;
+  cursor: pointer;
 }
 .view__block {
   flex: 0 1 43.33%;
@@ -411,10 +425,27 @@ input[type='range']::-moz-range-thumb {
   border-radius: 3px;
   background: black;
 }
+
+.view-block-grid {
+  background: #51aa27;
+}
+
 .main__items {
   height: 900px;
   overflow: scroll;
 }
+
+.grid-view {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  column-gap: 25px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: solid black 2px;
+}
+
 .main__item {
   display: flex;
   height: 310px;
@@ -422,8 +453,22 @@ input[type='range']::-moz-range-thumb {
   border-bottom: 2px solid #d9d9d9;
   padding: 20px 0px 0px 30px;
 }
+
+.hidden {
+  display: none;
+}
+
 .main__item:not(:last-child) {
   margin-bottom: 25px;
+}
+
+.item-grid-view {
+  flex: 0 1 23%;
+  flex-direction: column;
+  height: 500px;
+  border: 2px solid #d9d9d9;
+  align-items: center;
+  padding: 15px 25px 30px 25px;
 }
 
 .item__photo {
@@ -435,18 +480,38 @@ input[type='range']::-moz-range-thumb {
   height: 240px;
   margin-bottom: 20px;
 }
+
+.item__photo-grid-view img {
+  width: 215px;
+  height: 215px;
+}
+
 .item__slide-photo {
   display: flex;
   justify-content: space-between;
   width: 240 px;
 }
+
+.item__slide-photo-grid-view {
+  width: 215px;
+}
+
 .item__slide-photo-block {
   width: 37px;
   height: 8px;
-  background: #4492f2;
+  background-color: gray;
   border-radius: 50px;
   cursor: pointer;
 }
+.active {
+  background-color: #4492f2;
+}
+
+.item__slide-photo-block-grid-view {
+  width: 26px;
+  height: 7px;
+}
+
 .item__slide-photo-block:hover {
   transform: scale(1.2);
 }
@@ -457,11 +522,23 @@ input[type='range']::-moz-range-thumb {
   margin-left: 60px;
 }
 
+.item__information-grid-view {
+  margin-left: 0px;
+}
+
 .item__title {
   margin: 8px 0px 21px 0px;
   font-weight: 700;
   font-size: 24px;
   line-height: 31px;
+}
+
+.item__title-grid-view {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 100%;
+  height: 50px;
 }
 
 .item__description {
@@ -472,6 +549,11 @@ input[type='range']::-moz-range-thumb {
   line-height: 21px;
   width: 570px;
 }
+
+.item-description-grid-view {
+  display: none;
+}
+
 .item__discount {
   font-weight: 400;
   font-size: 16px;
@@ -486,6 +568,10 @@ input[type='range']::-moz-range-thumb {
   margin-bottom: 25px;
 }
 
+.item__stock-grid-view {
+  margin-bottom: 10px;
+}
+
 .item__raiting {
   width: 40px;
   height: 21px;
@@ -493,20 +579,34 @@ input[type='range']::-moz-range-thumb {
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
-  text-align: center;
   color: #0d0c0c;
+  text-align: center;
 }
+
 .item__purchase {
   display: flex;
   flex-direction: column;
   margin-left: 40px;
 }
+
+.item__purchase-grid-view {
+  margin-left: 0px;
+  position: relative;
+}
+
 .item__price {
   margin: 8px 0px 41px 0px;
   font-weight: 700;
   font-size: 24px;
   line-height: 31.06px;
 }
+
+.item__price-grid-view {
+  text-align: center;
+  margin: 8px auto 15px auto;
+  width: 92px;
+}
+
 .main-button {
   width: 133px;
   height: 41px;
@@ -519,6 +619,26 @@ input[type='range']::-moz-range-thumb {
   line-height: 21px;
   cursor: pointer;
   transition: 0.2s;
+}
+.added-to-cart {
+  background: rgb(4, 4, 85);
+  transition: 0.5s;
+}
+
+.item__add-button-grid-view {
+  position: absolute;
+  bottom: -30px;
+  left: -90px;
+  margin-bottom: 0px;
+  width: 120px;
+}
+
+.item__details-button-grid-view {
+  position: absolute;
+  bottom: -30px;
+  right: -90px;
+  margin-bottom: 0px;
+  width: 120px;
 }
 
 .main-button:hover {
