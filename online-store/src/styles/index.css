@@ -1,31 +1,31 @@
 @font-face {
   font-family: 'pt_sansbold_italic';
-  src: url('assets/fonts/ptsans-bolditalic-webfont.woff2') format('woff2'),
-    url('assets/fonts/ptsans-bolditalic-webfont.woff') format('woff');
+  src: url('../assets/fonts/ptsans-bolditalic-webfont.woff2') format('woff2'),
+    url('../assets/fonts/ptsans-bolditalic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'pt_sansitalic';
-  src: url('assets/fonts/ptsans-italic-webfont.woff2') format('woff2'),
-    url('assets/fonts/ptsans-italic-webfont.woff') format('woff');
+  src: url('../assets/fonts/ptsans-italic-webfont.woff2') format('woff2'),
+    url('../assets/fonts/ptsans-italic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'pt_sansregular';
-  src: url('assets/fonts/ptsans-regular-webfont.woff2') format('woff2'),
-    url('assets/fonts/ptsans-regular-webfont.woff') format('woff');
+  src: url('../assets/fonts/ptsans-regular-webfont.woff2') format('woff2'),
+    url('../assets/fonts/ptsans-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'pt_sansbold';
-  src: url('assets/fonts/ptsans-bold-webfont.woff2') format('woff2'),
-    url('assets/fonts/ptsans-bold-webfont.woff') format('woff');
+  src: url('../assets/fonts/ptsans-bold-webfont.woff2') format('woff2'),
+    url('../assets/fonts/ptsans-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -137,7 +137,7 @@ body {
   align-items: center;
   width: 60px;
   height: 60px;
-  background: url('assets/icons/basket.svg') no-repeat;
+  background: url('../assets/icons/basket.svg') no-repeat;
   background-size: 60px 60px;
   cursor: pointer;
 }
@@ -178,7 +178,6 @@ body {
   margin: 50px auto 50px auto;
   display: flex;
   gap: 20px;
-  display: none;
 }
 .main__panel {
   flex: 0 1 250px;
