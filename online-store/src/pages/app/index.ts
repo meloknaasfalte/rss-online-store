@@ -14,9 +14,9 @@ export const enum PageIds {
 }
 class App {
     private static container: HTMLElement = document.body;
-    private static mainContainer: HTMLElement = document.querySelector('.main');
-    private static footerContainer: HTMLElement = document.querySelector('.footer');
-    private static headerContainer: HTMLElement = document.querySelector('.header');
+    private static mainContainer: HTMLDivElement = document.querySelector('.main');
+    private static footerContainer: HTMLDivElement = document.querySelector('.footer');
+    private static headerContainer: HTMLDivElement = document.querySelector('.header');
     private static defaultPageId: string = 'current-page';
     private initialPage: MainPage;
     private header: Header;
