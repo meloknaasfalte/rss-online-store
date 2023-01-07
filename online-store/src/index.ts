@@ -1,7 +1,12 @@
 import './index.css';
-import Card from './components/card/card';
+import App from './pages/app/index';
 
-import { products } from './components/products';
+import Card from '../src/core/interfaces/card';
+
+import { products } from '../src/core/data/products';
+
+const app = new App();
+app.run();
 
 const mainItems = document.querySelector('.main__items') as HTMLElement;
 const categoryBlock = document.querySelector('#category') as HTMLElement;
