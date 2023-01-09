@@ -11,6 +11,7 @@ import '../../styles/index.css';
 export const enum PageIds {
   MainPage = 'main-page',
   BascketPage = 'baskcket-page',
+  CardPage = 'card-page',
 }
 class App {
   private static container = document.body as HTMLInputElement;

@@ -63,6 +63,104 @@ class MainPage extends Page {
         </div>
       </div>
       <div class="main__items"></div>
+    </div>
+    <div class="main__card card">
+        <div class="card__path path">
+          <div id="store" class="path__store path__block">Store</div>
+          <div class="path__category path__block">/</div>
+          <div class="path__brand path__block"></div>
+          <div class="path__description path__block"></div>
+        </div>
+        <div class="card__body">
+          <div class="card__title">
+         
+          </div>
+          <div class="card__content">
+            <div class="card__photo">
+              <img id ="card-img"
+                src=""
+                alt=""
+              />
+              <div class="card__slide-photo">
+                <div class="card__slide-photo-block active"></div>
+                <div class="card__slide-photo-block"></div>
+                <div class="card__slide-photo-block"></div>
+                <div class="card__slide-photo-block"></div>
+              </div>
+            </div>
+            <div class="card__information infromation">
+              <div class="information__description information__block">
+                <div class="information__title">Description:</div>
+                <div class="information__content content-description"></div>
+              </div>
+              <div class="information__discount information__block">
+                <div class="information__title">Discount Percentage:</div>
+                <div class="information__content content-discount"></div>
+              </div>
+              <div class="information__raiting information__block">
+                <div class="information__title">Rating:</div>
+                <div class="information__content content-raiting"></div>
+              </div>
+              <div class="information__stock information__block">
+                <div class="information__title">Stock:</div>
+                <div class="information__content content-stock"></div>
+              </div>
+              <div class="information__brand information__block">
+                <div class="information__title">Brand:</div>
+                <div class="information__content content-brand"></div>
+              </div>
+              <div class="information__category information__block">
+                <div class="information__title">Category:</div>
+                <div class="information__content content-category"></div>
+              </div>
+            </div>
+            <div class="card__purchase">
+              <div class="card__price"></div>
+              <button class="card__add-button card-button">
+                Add to cart
+              </button>
+              <button class="card__buy-button card-button">Buy now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__buy buy">
+      <div class="buy__title">Perosnal details</div>
+      <div class="buy__input-block">
+        <input class="buy__name" type="text" placeholder="Name" />
+      </div>
+      <div class="buy__input-block">
+        <input class="buy__phone" type="text" placeholder="Phone number" />
+      </div>
+      <div class="buy__input-block">
+        <input
+          class="buy__address"
+          type="text"
+          placeholder="Delivery address"
+        />
+      </div>
+      <div class="buy__input-block">
+        <input class="buy__mail" type="email" placeholder="E-mail" />
+      </div>
+      <div class="buy__credit-title">Credit card details</div>
+      <div class="buy__credit credit">
+        <div class="credit__number-block">
+          <div class="credit__image"></div>
+          <input class="credit__number" type="text" placeholder="Card number" />
+        </div>
+        <div class="credit__security-block">
+          <div class="credit__valid-block">
+            <div class="credit__valid-text">VALID:</div>
+            <input class="credit__valid" type="text" placeholder="Valid Thru" />
+          </div>
+          <div class="crediv-cvv-block">
+            <div class="credit__cvv-text">CVV:</div>
+            <input class="credit__cvv" type="text" placeholder="Code" />
+          </div>
+        </div>
+      </div>
+      <button class="credit__button">Confirm</button>
+      <button class="credit__button-close">Close this menu</button>
     </div>`,
   };
 

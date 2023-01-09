@@ -104,8 +104,9 @@ body {
   cursor: pointer;
 }
 .store-link__image {
-  width: 100px;
-  height: 100px;
+  background: url('assets/icons/logo.png') no-repeat;
+  background-size: 100px 80px;
+  background-position: center;
 }
 .store-link__text {
   color: #ffffff;
@@ -178,7 +179,6 @@ body {
   margin: 50px auto 50px auto;
   display: flex;
   gap: 20px;
-  display: none;
 }
 .main__panel {
   flex: 0 1 250px;
@@ -645,6 +645,9 @@ input[type='range']::-moz-range-thumb {
 .main-button:hover {
   background: blue;
 }
+.main-hidden {
+  display: none;
+}
 
 /*=================================================CARD===================================================*/
 
@@ -652,12 +655,18 @@ input[type='range']::-moz-range-thumb {
   width: 1000px;
   background: #ffffff;
   margin: 0px auto 50px auto;
+  display: none;
 }
+.main__card-active {
+  display: flex;
+  flex-direction: column;
+}
+
 .card__path {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin: 50px auto 0px auto;
+  margin: 0px auto 0px auto;
   align-items: center;
 }
 
@@ -665,7 +674,7 @@ input[type='range']::-moz-range-thumb {
   content: '>>';
   font-size: 20px;
   color: black;
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .card__path div:last-child::after {
@@ -681,12 +690,12 @@ input[type='range']::-moz-range-thumb {
   line-height: 120%;
 }
 
-.path__link {
-  font-size: 18px;
+.path__store {
+  transition: 0.2s;
+  cursor: pointer;
 }
-.path__block:first-child {
-  display: flex;
-  align-items: center;
+.path__store:hover {
+  color: #51aa27;
 }
 
 .card__body {
@@ -809,6 +818,68 @@ input[type='range']::-moz-range-thumb {
   background: blue;
 }
 
+/*===============================================BUY=====================================================*/
+
+.main__buy {
+  margin: 0px auto 0px auto;
+  width: 500px;
+  height: 800px;
+  background: white;
+  padding: 15px 30px 15px 30px;
+  display: none;
+  border: 2px solid #d9d9d9;
+  border-radius: 5px;
+}
+.buy__title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.buy__input-block {
+  margin: 0px auto 0px auto;
+  width: 400px;
+  text-align: center;
+}
+.buy__input-block > input {
+  text-align: center;
+  border: solid gray 1px;
+  height: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.buy__credit-title {
+  margin: 0px auto 0px auto;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.buy__credit {
+  margin: 0px auto 0px auto;
+  color: white;
+  width: 350px;
+  height: 150px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 56%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border: 2px solid gray;
+  border-radius: 15px;
+}
+.credit__number-block {
+  display: flex;
+  width: 90%;
+  margin: 0px auto 0px auto;
+  justify-content: space-between;
+}
+.credti__image {
+  width: 70px;
+  height: 35px;
+  background: url('assets/icons/defCard.png');
+}
+
 /*================================================FOOTER==================================================*/
 .footer {
   background: #0d0c0c;
@@ -849,6 +920,13 @@ input[type='range']::-moz-range-thumb {
   width: 64px;
   height: 64px;
   margin-bottom: 10px;
+}
+.github-logo {
+  width: 64px;
+  height: 64px;
+  background: url('assets/icons/github-logo.svg') no-repeat;
+  background-position: center;
+  background-size: 60px 60px;
 }
 .footer__github-links {
 }

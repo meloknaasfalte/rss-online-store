@@ -1,15 +1,10 @@
-import Icon from '../../assets/icons/logo.png';
+/*import Icon from '../../assets/icons/logo.png';*/
 import creatImage from './functions/create-img';
 const logo = './../assets/icons/logo.png';
 
 const headerHTML: string = `<div class="header__container _container">
 <div class="header__store-link store-link">
-  ${creatImage(
-    'store-link__image',
-    '/assets/icons/logo.png',
-    'online-store logo',
-    Icon
-  )}
+ <div class="store-link__image"> </div>
   <h1 class="store-link__text">RS School Store</h1>
 </div>
           <div class="header__search">
