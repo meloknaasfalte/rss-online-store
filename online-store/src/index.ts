@@ -1,4 +1,4 @@
-import './index.css';
+import '../src/styles/index.css';
 import App from './pages/app/index';
 
 import Card from '../src/core/interfaces/card';
@@ -23,6 +23,7 @@ const priceFilterBlock = document.querySelector(
 const stockFilterBlock = document.querySelector(
   '#stock-filter'
 ) as HTMLInputElement;
+const countMoney = document.querySelector('.count__money') as HTMLInputElement;
 const productsFilteredFinal: Card[] = [];
 
 products.forEach((e: Card) => {
@@ -186,10 +187,14 @@ const linksCountDisplay = Array.from(
 const addButtons = Array.from(
   document.getElementsByClassName('item__add-button')
 );
+const detialsButtons = Array.from(
+  document.getElementsByClassName('item__details-button')
+);
 const itemsInformation = Array.from(
   document.getElementsByClassName('item__information')
 );
-foundCount.innerHTML = itemsInformation.length.toString();
+
+foundCount.innerHTML += itemsInformation.length.toString();
 const cartItems: string[] = [];
 const checkFilters: NodeListOf<HTMLInputElement> = document.querySelectorAll(
   '.filter__checkbox'
@@ -1476,6 +1481,16 @@ buttonsAdd.forEach((el) => {
           cartItems.splice(i, 1);
         }
       }
+      products.forEach((e) => {
+        if (e.title == itemCart.id.slice(2)) {
+          countMoney.innerHTML = `${
+            +countMoney.innerHTML.substring(
+              0,
+              countMoney.innerHTML.length - 1
+            ) - e.price
+          } ₽`;
+        }
+      });
     } else {
       el.innerHTML = 'Drop from cart';
       el.classList.add('added-to-cart');
@@ -1484,6 +1499,16 @@ buttonsAdd.forEach((el) => {
       {
         cartItems.push(itemCart.id);
       }
+      products.forEach((e) => {
+        if (e.title == itemCart.id.slice(2)) {
+          countMoney.innerHTML = `${
+            +countMoney.innerHTML.substring(
+              0,
+              countMoney.innerHTML.length - 1
+            ) + e.price
+          } ₽`;
+        }
+      });
     }
   });
 });
@@ -1755,3 +1780,252 @@ addButtons.forEach((e) =>
       .length.toString()}`;
   })
 );
+
+const viewCard: Card[] = [];
+detialsButtons.forEach((e) => {
+  e.addEventListener('click', () => {
+    const purchaseBlock = e.closest('.item__purchase') as HTMLInputElement;
+    const itemCart = purchaseBlock.previousElementSibling as HTMLInputElement;
+    const mainPanel = document.querySelector('.main__panel') as HTMLElement;
+    const mainStore = document.querySelector('.main__store') as HTMLElement;
+    mainPanel.classList.add('main-hidden');
+    mainStore.classList.add('main-hidden');
+    const mainCard = document.querySelector('.main__card') as HTMLElement;
+    mainCard.classList.add('main__card-active');
+    const mainContainer = document.querySelector(
+      '.main__container'
+    ) as HTMLElement;
+    products.forEach((e) => {
+      if (e.title == itemCart.id.slice(2)) {
+        viewCard.push(e);
+        const pathCategory = document.querySelector(
+          '.path__category'
+        ) as HTMLInputElement;
+        pathCategory.innerHTML = viewCard[0].category;
+        const pathBrand = document.querySelector(
+          '.path__brand'
+        ) as HTMLInputElement;
+        pathBrand.innerHTML = viewCard[0].brand;
+        const pathDescription = document.querySelector(
+          '.path__description'
+        ) as HTMLInputElement;
+        pathDescription.innerHTML = viewCard[0].description;
+        const cardTitle = document.querySelector(
+          '.card__title'
+        ) as HTMLInputElement;
+        cardTitle.innerHTML = viewCard[0].description;
+        const cardImg = document.querySelector('#card-img') as HTMLImageElement;
+        cardImg.src = `${viewCard[0].thumbnail}`;
+        cardImg.alt = `${viewCard[0].title}`;
+        const slidePhotos = Array.from(
+          document.getElementsByClassName('card__slide-photo-block')
+        );
+        slidePhotos.forEach((el) => {
+          el.addEventListener('click', function () {
+            const onePhotoSlide = el.closest(
+              '.card__slide-photo'
+            ) as HTMLElement;
+
+            const childList = Array.from(
+              onePhotoSlide.getElementsByClassName('card__slide-photo-block')
+            );
+
+            for (let childNode of childList) {
+              childNode.classList.remove('active');
+            }
+            el.classList.add('active');
+          });
+        });
+        slidePhotos[0].addEventListener('click', () => {
+          cardImg.src = viewCard[0].thumbnail;
+        });
+
+        slidePhotos[1].addEventListener('click', () => {
+          cardImg.src = viewCard[0].images[0];
+        });
+        slidePhotos[2].addEventListener('click', () => {
+          cardImg.src = viewCard[0].images[1];
+        });
+        slidePhotos[3].addEventListener('click', () => {
+          cardImg.src = viewCard[0].images[2];
+        });
+        const contentDescription = document.querySelector(
+          '.content-description'
+        ) as HTMLInputElement;
+        contentDescription.innerHTML = viewCard[0].description;
+        const contentDiscount = document.querySelector(
+          '.content-discount'
+        ) as HTMLInputElement;
+        contentDiscount.innerHTML = `${viewCard[0].discountPercentage} %`;
+        const contentRaiting = document.querySelector(
+          '.content-raiting'
+        ) as HTMLInputElement;
+        contentRaiting.innerHTML = `${viewCard[0].rating}`;
+        const contentStock = document.querySelector(
+          '.content-stock'
+        ) as HTMLInputElement;
+        contentStock.innerHTML = `${viewCard[0].stock}`;
+        const contentBrand = document.querySelector(
+          '.content-brand'
+        ) as HTMLInputElement;
+        contentBrand.innerHTML = viewCard[0].brand;
+        const contenCategory = document.querySelector(
+          '.content-category'
+        ) as HTMLInputElement;
+        contenCategory.innerHTML = viewCard[0].category;
+      }
+    });
+    const addButtonBlockCard = document.querySelector(
+      '.card__add-button'
+    ) as HTMLButtonElement;
+    if (cartItems.length == 0) {
+      addButtonBlockCard.classList.remove('added-to-cart');
+      addButtonBlockCard.innerHTML = 'Add to cart';
+    }
+    if (
+      cartItems.filter((e) => e.slice(2).includes(viewCard[0].title)).length >
+        0 &&
+      !addButtonBlockCard.classList.contains('added-to-cart')
+    ) {
+      addButtonBlockCard.classList.add('added-to-cart');
+      addButtonBlockCard.innerHTML = 'Drop from cart';
+    }
+
+    if (
+      cartItems.filter((e) => e.slice(2).includes(viewCard[0].title)).length ==
+        0 &&
+      addButtonBlockCard.classList.contains('added-to-cart')
+    ) {
+      addButtonBlockCard.classList.remove('added-to-cart');
+      addButtonBlockCard.innerHTML = 'Add to cart';
+    }
+  });
+});
+
+const addButtonBlockCard = document.querySelector(
+  '.card__add-button'
+) as HTMLButtonElement;
+
+addButtonBlockCard.addEventListener('click', () => {
+  if (addButtonBlockCard.classList.contains('added-to-cart') === true) {
+    addButtonBlockCard.classList.remove('added-to-cart');
+    addButtonBlockCard.innerHTML = 'Add to cart';
+    for (let i = 0; i < cartItems.length; i++) {
+      if (cartItems[i].slice(2) === viewCard[0].title) {
+        cartItems.splice(i, 1);
+      }
+    }
+    basketCount.innerHTML = (+basketCount.innerHTML - 1).toString();
+    products.forEach((e) => {
+      if (e.title == viewCard[0].title) {
+        countMoney.innerHTML = `${
+          +countMoney.innerHTML.substring(0, countMoney.innerHTML.length - 1) -
+          viewCard[0].price
+        } ₽`;
+      }
+    });
+  } else {
+    addButtonBlockCard.innerHTML = 'Drop from cart';
+    addButtonBlockCard.classList.add('added-to-cart');
+    cartItems.push(`i.${viewCard[0].title}`);
+    basketCount.innerHTML = (+basketCount.innerHTML + 1).toString();
+    products.forEach((e) => {
+      if (e.title == viewCard[0].title) {
+        countMoney.innerHTML = `${
+          +countMoney.innerHTML.substring(0, countMoney.innerHTML.length - 1) +
+          viewCard[0].price
+        } ₽`;
+      }
+    });
+  }
+});
+
+const store = document.querySelector('#store') as HTMLElement;
+store.addEventListener('click', () => {
+  viewCard.splice(0, viewCard.length);
+
+  const mainCard = document.querySelector('.main__card') as HTMLElement;
+  mainCard.classList.remove('main__card-active');
+
+  const mainPanel = document.querySelector('.main__panel') as HTMLElement;
+  const mainStore = document.querySelector('.main__store') as HTMLElement;
+  mainPanel.classList.remove('main-hidden');
+  mainStore.classList.remove('main-hidden');
+  addButtons.forEach((e) => {
+    e.classList.remove('added-to-cart');
+    e.innerHTML = 'Add to cart';
+  });
+  cartItems.forEach((e) => {
+    for (let i = 0; i < itemsInformation.length; i++) {
+      if (e === itemsInformation[i].id) {
+        const purchaseBlock = itemsInformation[i]
+          .nextElementSibling as HTMLInputElement;
+        const addButtonBlock = purchaseBlock.querySelector(
+          '.item__add-button'
+        ) as HTMLInputElement;
+        addButtonBlock.classList.add('added-to-cart');
+        addButtonBlock.innerHTML = 'Drop from cart';
+      }
+    }
+  });
+});
+const mainBuy = document.querySelector('.main__buy') as HTMLElement;
+const buyButton = document.querySelector(
+  '.card__buy-button'
+) as HTMLButtonElement;
+const mainCard = document.querySelector('.main__card') as HTMLElement;
+buyButton.addEventListener('click', () => {
+  mainCard.classList.remove('main__card-active');
+
+  mainBuy.classList.add('main__buy-active');
+});
+const mainBuyClose = document.querySelector(
+  '.credit__button-close'
+) as HTMLButtonElement;
+
+mainBuyClose.addEventListener('click', () => {
+  mainBuy.classList.remove('main__buy-active');
+  mainCard.classList.add('main__card-active');
+});
+
+const inputNumber = document.querySelector(
+  '.credit__number'
+) as HTMLInputElement;
+inputNumber.addEventListener('change', () => {
+  if (inputNumber.value.length == 16 && Number(inputNumber.value)) {
+    inputNumber.classList.add('valid');
+  } else {
+    inputNumber.classList.remove('valid');
+  }
+});
+
+const inputPhone = document.querySelector('.buy__phone') as HTMLInputElement;
+inputPhone.addEventListener('change', () => {
+  if (
+    inputPhone.value[0] == '+' &&
+    Number(inputPhone.value.slice(1)) &&
+    inputPhone.value.length > 9
+  ) {
+    inputPhone.classList.add('valid');
+  } else {
+    inputPhone.classList.remove('valid');
+  }
+});
+
+const inputMail = document.querySelector('.buy__mail') as HTMLInputElement;
+inputMail.addEventListener('change', () => {
+  const mailReg = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+  if (mailReg.test(inputMail.value)) {
+    inputMail.classList.add('valid');
+  } else {
+    inputMail.classList.remove('valid');
+  }
+});
+const inputCVV = document.querySelector('.credit__cvv') as HTMLInputElement;
+inputCVV.addEventListener('change', () => {
+  if (Number(inputCVV.value) && inputCVV.value.length == 3) {
+    inputCVV.classList.add('valid');
+  } else {
+    inputCVV.classList.remove('valid');
+  }
+});

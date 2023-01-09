@@ -1,4 +1,4 @@
-import Icon from '../../assets/icons/github-logo.svg';
+/*import Icon from '../../assets/icons/github-logo.svg';*/
 import creatImage from './functions/create-img';
 
 const footerHTML: string = `<div class="footer__container _container">
@@ -28,12 +28,7 @@ const footerHTML: string = `<div class="footer__container _container">
   </div>
   <div class="footer__gihub">
     <div class="footer__github-logo">
-      ${creatImage(
-        'github-logo',
-        '/assets/icons/github-logo.svg',
-        'github-logo',
-        Icon
-      )}
+      <div class="github-logo"></div>
     </div>
     <div class="footer__github-links">
       <a
