@@ -1,4 +1,5 @@
 import Component from '../templates/components';
+import { PageIds } from '../../pages/app';
 
 class Header extends Component {
   constructor(tagName: string, className: string, content: string) {

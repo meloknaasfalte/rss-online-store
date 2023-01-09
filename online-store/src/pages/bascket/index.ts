@@ -1,6 +1,6 @@
 import Page from '../../core/templates/page';
 
-class SettingsPage extends Page {
+class BasketPage extends Page {
   static TextObject = {
     MainTitle: 'Settings Page',
   };
@@ -10,10 +10,10 @@ class SettingsPage extends Page {
   }
 
   render() {
-    const title = this.createHeaderTitle(SettingsPage.TextObject.MainTitle);
+    const title = this.createHeaderTitle(BasketPage.TextObject.MainTitle);
     this.container.append(title);
     return this.container;
   }
 }
 
-export default SettingsPage;
+export default BasketPage;

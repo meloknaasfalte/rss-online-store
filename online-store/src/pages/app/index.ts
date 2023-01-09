@@ -1,6 +1,6 @@
 import MainPage from '../main/index';
 import Page from '../../core/templates/page';
-import SettingsPage from '../bascket/index';
+import BasketPage from '../bascket/index';
 import Header from '../../core/components/header';
 import headerHTML from '../../core/components/header-content';
 import Footer from '../../core/components/footer';
@@ -10,7 +10,7 @@ import '../../styles/index.css';
 
 export const enum PageIds {
   MainPage = 'main-page',
-  BascketPage = 'baskcket-page',
+  BasketPage = 'basket-page',
 }
 class App {
   private static container = document.body as HTMLInputElement;
@@ -37,8 +37,8 @@ class App {
 
     if (idPage === PageIds.MainPage) {
       page = new MainPage(idPage);
-    } else if (idPage === PageIds.BascketPage) {
-      page = new SettingsPage(idPage);
+    } else if (idPage === PageIds.BasketPage) {
+      page = new BasketPage(idPage);
     } else {
       page = new ErrorPage(idPage, ErrorTypes.Error_404);
     }

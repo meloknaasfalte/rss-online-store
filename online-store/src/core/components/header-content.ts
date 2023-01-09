@@ -20,9 +20,9 @@ const headerHTML: string = `<div class="header__container _container">
             />
           </div>
           <div class="header__basket">
-            <div class="header__basket-link basket-link">
+            <a class="header__basket-link basket-link" href="#basket-page">
               <div id="basket-count" class="basket-link__count">0</div>
-            </div>
+            </a>
             <div class="header__count count">
               <div class="count__text">Total sum</div>
               <div class="count__money">0 ₽</div>
